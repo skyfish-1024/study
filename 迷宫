@@ -1,0 +1,64 @@
+package main
+
+import "fmt"
+
+//移动路径
+func out(maze *[100][100]int, j, k, n, m int) (int, int) {
+	if 0 <= j+1 && j+1 <= n && (*maze)[j+1][k] == 1 {
+		(*maze)[j][k] = 0 //走过的位置设标记，保证不会往返循环
+		j = j + 1         //定位到走过一步后的位置
+		fmt.Printf("(%d,%d)", j, k)
+	} else if 0 <= k+1 && k+1 <= m && (*maze)[j][k+1] == 1 {
+		(*maze)[j][k] = 0
+		k = k + 1
+		fmt.Printf("(%d,%d)", j, k)
+	} else if 0 <= j-1 && j-1 <= n && (*maze)[j-1][k] == 1 {
+		(*maze)[j][k] = 0
+		j = j - 1
+		fmt.Printf("(%d,%d)", j, k)
+	} else if 0 <= k-1 && k-1 <= m && (*maze)[j][k-1] == 1 {
+		(*maze)[j][k] = 0
+		k = k - 1
+		fmt.Printf("(%d,%d)", j, k)
+	}
+	return j, k
+}
+func main() {
+	var maze [100][100]int //声明一个较大的二维数组，作为迷宫的雏形
+	var N, M, T int        //声明行，列，障碍数对应的变量
+	var n, m int           //声明终点坐标对应的变量
+	var x, y int           //声明障碍坐标对应的变量
+	var j, k int           //声明起点坐标对应的变量
+	fmt.Println("请输入迷宫规格N行M列，障碍数T")
+	fmt.Scanf("%d%d%d", &N, &M, &T)
+	//制作真正的迷宫，规定范围
+	for i := 0; i < N; i++ {
+		for j := 0; j < M; j++ {
+			maze[i][j] = 1
+		}
+	}
+	fmt.Println("请输入起点坐标：")
+	fmt.Scan(&j, &k) //输入起点坐标
+	//fmt.Println(maze)
+	fmt.Println("请输入终点坐标：")
+	fmt.Scan(&n, &m)
+	fmt.Printf("请输入%d个障碍坐标：\n", T)
+	for i := 0; i < T; i++ {
+		fmt.Scan(&x, &y)
+		maze[x][y] = 0 //给障碍点坐标赋值0，作为判断条件，保证不会撞上
+	}
+	fmt.Printf("(%d,%d)",j,k) //打印起点坐标
+	//寻找路径，走出迷宫
+	var count int
+	for {
+		count++
+		if j == n && k == m {
+			break
+		} else if count > 1000 {
+			fmt.Println("抱歉，迷路了")
+			break //防止陷入死循环
+		} else {
+			j, k = out(&maze, j, k, n, m)
+		}
+	}
+}
