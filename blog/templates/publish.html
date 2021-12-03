@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布文章</title>
+</head>
+<body>
+<form action="/publish" method="post">
+    <div>
+        <label>文章标题:<input type="text" name="title"></label>
+    </div>
+    <div>
+        <label>文章内容:<input type="text" name="content"></label>
+    </div>
+    <div>
+        <label>作者:<input type="text" name="author"></label>
+    </div>
+    <div>
+        <label>发布时间:<input type="datetime-local" name="post_time"></label>
+    </div>
+
+    <div>
+        <input type="submit" value="发布">
+        <a href="home">返回</a>
+    </div>
+</form>
+
+</body>
+</html>
