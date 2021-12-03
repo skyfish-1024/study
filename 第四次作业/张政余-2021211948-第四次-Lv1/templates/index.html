@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome</title>
+</head>
+<body>
+<div align="center">
+    <h1>Hello,welcome!</h1>
+    <P>{{.结果}}</P>
+    <p>账号：{{.Name}}</p>
+    <P>密码：{{.Password}}</P>
+    <P>ALL:{{.all}}</P>
+</div>
+<hr>
+{{if .结果}}
+<script src="/statics/login_succeed.js"></script>
+{{else}}
+{{end}}
+</body>
+</html>
