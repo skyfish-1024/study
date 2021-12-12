@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找回密码</title>
+</head>
+<body>
+<div align="center">
+    <h1>找回密码</h1>
+    <form action="back" method="post" novalidate autocomplete="off">
+        <div>
+            <label for="username">账号:</label>
+            <input type="text" name="username" id="username">
+        </div>
+
+        <div>
+            <label for="security_question">密保:</label>
+            <input type="text" name="security_question" id="security_question">
+        </div>
+
+        <div>
+            <input type="submit" value="找回">
+        </div>
+    </form>
+    <a href="login">登录</a>
+    <a href="register">注册</a>
+    <a href="home">返回</a>
+</div>
+<p>结果：{{.outcome}}</p>
+</body>
+</html>

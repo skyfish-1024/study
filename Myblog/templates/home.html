@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Myblog</title>
+</head>
+<body bgcolor="#ffebcd">
+<div align="center">
+    <h1>美好的一天，从撸代码开始🤣！</h1>
+</div>
+<div><h1>亲爱的：{{.username}}</h1></div>
+<div align="right">
+    <a href="login">登录</a>
+    <a href="register">注册</a>
+    <a href="home">返回</a>
+</div>
+<a href="leavemassage">留言</a>
+<u1>
+    {{range .Leavingmassage}}
+    <h1>{{.Comment}}</h1>
+
+    <div align="center">
+        <B>-----评论者:{{.Leaver}}</B>
+        </div>
+    <div align="center">
+        <B>评论时间:{{.PostTime}}</B>
+    </div>
+    {{end}}
+</u1>
+
+<hr width="60000px" size="2px" color="red" align="left"/>
+<h1>文章</h1>
+<a href="publish">发布</a>
+<u1>
+    {{range .Articles}}
+    <h1>{{.Title}}</h1>
+    <B>{{.Content}}</B>
+    <div align="center">
+        <p>作者:{{.Author}}获赞{{.PointNum}}</p>
+    </div>
+    {{end}}
+</u1>
+
+
+</body>
+</html>
